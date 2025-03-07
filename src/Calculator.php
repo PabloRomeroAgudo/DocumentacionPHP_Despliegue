@@ -67,4 +67,16 @@ class Calculator {
   public function multiplicar($a, $b) {
     return $a * $b;
   }
+
+  /**
+   * Divide dos números.
+   *
+   * @param float $a Primer número.
+   * @param float $b Segundo número.
+   *
+   * @return float El cociente de $a y $b.
+   */
+  public function dividir($a, $b) {
+    return $a / $b;
+  }
 }
