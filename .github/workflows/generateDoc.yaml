@@ -1,0 +1,41 @@
+name: Generar documentación
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write # Se requieren permisos de escritura para realizar commits
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      - name: Configurar PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2' # Especifica la versión de PHP que necesitas
+          extensions: mbstring
+
+      - name: Generar documentación con phpDocumentor
+        run: php phpDocumentor.phar
+
+      - name: Configurar git para commit
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+
+      - name: Añadir y commitear cambios
+        run: |
+          git add docs/
+          git commit -m 'Actualizar documentación [skip ci]' || echo "Sin cambios para commitear"
+
+      - name: Hacer push de los cambios
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git push

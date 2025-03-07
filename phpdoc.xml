@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdocumentor
+  configVersion="3"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="https://www.phpdoc.org"
+  xsi:noNamespaceSchemaLocation="https://docs.phpdoc.org/latest/phpdoc.xsd">
+  <title>MiApp</title>
+  <paths>
+    <output>docs</output>
+    <cache>.phpdoc/cache</cache>
+  </paths>
+  <version number="latest">
+    <api>
+      <source>
+        <dsn>.</dsn>
+        <paths>
+          <path>src</path>
+        </paths>
+      </source>
+    </api>
+  </version>
+</phpdocumentor>
